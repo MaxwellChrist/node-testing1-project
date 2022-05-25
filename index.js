@@ -1,11 +1,3 @@
-/**
- * [Exercise 1] trimProperties copies an object trimming its properties
- * @param {object} obj - an object with properties that are strings
- * @returns {object} - a copy of the object with strings trimmed
- *
- * EXAMPLE
- * trimProperties({ name: '  jane  ' }) // returns a new object { name: 'jane' }
- */
 function trimProperties(obj) {
   const newObj = {}
   Object.entries(obj).forEach(([key,value]) => {
@@ -14,14 +6,6 @@ function trimProperties(obj) {
   return newObj
 }
 
-/**
- * [Exercise 2] trimPropertiesMutation trims in place the properties of an object
- * @param {object} obj - an object with properties that are strings
- * @returns {object} - the same object with strings trimmed
- *
- * EXAMPLE
- * trimPropertiesMutation({ name: '  jane  ' }) // returns the object mutated in place { name: 'jane' }
- */
 function trimPropertiesMutation(obj) {
   Object.entries(obj).forEach(([key,value]) => {
     obj[key] = value.trim()
@@ -30,14 +14,6 @@ function trimPropertiesMutation(obj) {
 
 }
 
-/**
- * [Exercise 3] findLargestInteger finds the largest integer in an array of objects { integer: 1 }
- * @param {object[]} integers - an array of objects
- * @returns {number} - the largest integer
- *
- * EXAMPLE
- * findLargestInteger([{ integer: 1 }, { integer: 3 }, { integer: 2 }]) // returns 3
- */
 function findLargestInteger(integers) {
   let total = 0;
   integers.map(item => {
@@ -51,28 +27,11 @@ function findLargestInteger(integers) {
 }
 
 class Counter {
-  /**
-   * [Exercise 4A] Counter creates a counter
-   * @param {number} initialNumber - the initial state of the count
-   */
   constructor(initialNumber) {
     this.initialNumber = initialNumber
   }
-
-  /**
-   * [Exercise 4B] Counter.prototype.countDown counts down to zero
-   * @returns {number} - the next count, does not go below zero
-   *
-   * EXAMPLE
-   * const counter = new Counter(3)
-   * counter.countDown() // returns 3
-   * counter.countDown() // returns 2
-   * counter.countDown() // returns 1
-   * counter.countDown() // returns 0
-   * counter.countDown() // returns 0
-   */
   countDown() {
-    // ✨ implement
+
     if (this.initialNumber === 0) {
       return this.initialNumber
     } else {
@@ -85,8 +44,12 @@ class Seasons {
   /**
    * [Exercise 5A] Seasons creates a seasons object
    */
-  constructor() {
-    // ✨ initialize whatever properties are needed
+  constructor(current) {
+    this.current = "spring"
+    this.spring = "spring"
+    this.summer = "summer"
+    this.fall = "fall"
+    this.winter = "winter"
   }
 
   /**
@@ -102,7 +65,19 @@ class Seasons {
    * seasons.next() // returns "summer"
    */
   next() {
-    // ✨ implement
+    if (this.current === this.summer) {
+      this.current = "fall"
+      return this.current
+    } else if (this.current === this.fall) {
+      this.current = "winter"
+      return this.current
+    } else if (this.current === this.winter) {
+      this.current = "spring"
+      return this.current
+    } else {
+      this.current = "summer"
+      return this.current
+    }
   }
 }
 
