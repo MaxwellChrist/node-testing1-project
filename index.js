@@ -39,7 +39,15 @@ function trimPropertiesMutation(obj) {
  * findLargestInteger([{ integer: 1 }, { integer: 3 }, { integer: 2 }]) // returns 3
  */
 function findLargestInteger(integers) {
-  // ✨ implement
+  let total = 0;
+  integers.map(item => {
+    Object.entries(item).forEach(([key,value]) => {
+      if (value > total) {
+        total = value
+      }
+    })
+  })
+  return total
 }
 
 class Counter {
@@ -48,7 +56,7 @@ class Counter {
    * @param {number} initialNumber - the initial state of the count
    */
   constructor(initialNumber) {
-    // ✨ initialize whatever properties are needed
+    this.initialNumber = initialNumber
   }
 
   /**
@@ -65,6 +73,11 @@ class Counter {
    */
   countDown() {
     // ✨ implement
+    if (this.initialNumber === 0) {
+      return this.initialNumber
+    } else {
+      return this.initialNumber--
+    }
   }
 }
 
