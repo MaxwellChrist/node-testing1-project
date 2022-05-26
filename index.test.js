@@ -138,8 +138,8 @@ describe('[Exercise 6] Car', () => {
   beforeEach(() => {
     focus = new utils.Car('focus', 20, 30) // each test must start with a fresh car
   })
-  test('[15] driving the car returns the updated odometer', () => { focus.drive(150)
-    expect(focus.drive(600)).toBe(600)
+  test('[15] driving the car returns the updated odometer', () => {
+    expect(focus.drive(100)).toBe(100)
   })
   test('[16] driving the car uses gas', () => {
     focus.drive(600)
