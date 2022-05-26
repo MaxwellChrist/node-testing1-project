@@ -41,6 +41,7 @@ describe('[Exercise 4] Counter', () => {
   let counter
   beforeEach(() => {
     counter = new utils.Counter(3)
+  })
   test('[6] the FIRST CALL of counter.countDown returns the initial count', () => {
     expect(counter.countDown()).toEqual(3)    
   })
@@ -55,7 +56,6 @@ describe('[Exercise 4] Counter', () => {
     counter.countDown()
     counter.countDown()
     expect(counter.countDown()).toEqual(0)    
-    })
   })
 })
 
@@ -63,6 +63,7 @@ describe('[Exercise 5] Seasons', () => {
   let seasons
   beforeEach(() => {
     seasons = new utils.Seasons()
+  })
   test('[9] the FIRST call of seasons.next returns "summer"', () => {
     expect(seasons.next()).toEqual("summer")
   })
@@ -129,7 +130,6 @@ describe('[Exercise 5] Seasons', () => {
     seasons.next()
     seasons.next()
     expect(seasons.next()).toEqual("spring")
-    })
   })
 })
 
@@ -138,13 +138,34 @@ describe('[Exercise 6] Car', () => {
   beforeEach(() => {
     focus = new utils.Car('focus', 20, 30) // each test must start with a fresh car
   })
-  // test('[15] driving the car returns the updated odometer', () => {})
-  // test('[16] driving the car uses gas', () => {})
-  // test('[17] refueling allows to keep driving', () => {})
-  // test('[18] adding fuel to a full tank has no effect', () => {})
+  test('[15] driving the car returns the updated odometer', () => { focus.drive(150)
+    expect(focus.drive(600)).toBe(600)
+  })
+  test('[16] driving the car uses gas', () => {
+    focus.drive(600)
+    expect(focus.tank).toBe(0)
+  })
+  test('[17] refueling allows to keep driving', () => {
+    focus.drive(600)
+    expect(focus.tank).toBe(0)
+    focus.refuel(1)
+    expect(focus.tank).toBe(1)
+  })
+  test('[18] adding fuel to a full tank has no effect', () => {
+    focus.drive(600)
+    expect(focus.tank).toBe(0)
+    focus.refuel(100)
+    expect(focus.tank).toBe(20)
+  })
 })
 
 describe('[Exercise 7] isEvenNumberAsync', () => {
-  // test('[19] resolves true if passed an even number', () => {})
-  // test('[20] resolves false if passed an odd number', () => {})
+  test('[19] resolves true if passed an even number', async () => {
+    let result = await utils.isEvenNumberAsync(2)
+    expect(result).toBe(true)
+  })
+  test('[20] resolves false if passed an odd number', async () => {
+    let number = await utils.isEvenNumberAsync(1)
+    expect(number).toBe(false)
+  })
 })
